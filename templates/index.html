@@ -1,32 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="./static/mywebscript.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP - Emotion Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="{{ url_for('static', filename='mywebscript.js') }}" defer></script>
     <style>
-        .center-heading {
-            text-align: center;
-        }
+        .center-heading { text-align: center; }
+        .page-content { padding: 25px; }
+        #system_response { white-space: pre-wrap; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-body">
-            <h1 class="center-heading">NLP - Emotion Detection</h1> 
-            <div style="padding: 25px 25px 25px 25px;">
-            <h2 class="mb-3">
-                <label class="form-label">Please enter the text to be analyzed</label>
-                <input type="textarea" class="form-control" id="textToAnalyze">
-            </h2>
+    <main class="container mt-4">
+        <div class="card">
+            <div class="card-body page-content">
+                <h1 class="center-heading mb-4">NLP - Emotion Detection</h1>
+                <label for="textToAnalyze" class="form-label">
+                    Please enter the text to be analyzed
+                </label>
+                <textarea class="form-control" id="textToAnalyze" rows="4"
+                    placeholder="Write a sentence here..."></textarea>
 
-            <div style="padding: 25px 25px 25px 25px;">
-                <button onclick="RunSentimentAnalysis()" class="btn btn-secondary">Run Sentiment Analysis</button>
+                <div class="mt-3 mb-4">
+                    <button id="analyzeButton" class="btn btn-primary"
+                        onclick="RunSentimentAnalysis()">Analyze emotions</button>
+                </div>
+
+                <h2 class="h4">Result of Emotion Detection</h2>
+                <div id="system_response" class="alert alert-light" role="status"
+                    aria-live="polite">Your result will appear here.</div>
             </div>
-            <div style="padding: 25px 25px 25px 25px;"></div>
-            <h2 class="mb-3">
-                <label class="form-label">Result of Emotion Detection</label>
-            </h2>
-
-            <div id="system_response" style="padding: 25px 25px 25px 25px;"></div>
         </div>
-    </div>
+    </main>
 </body>
+</html>
