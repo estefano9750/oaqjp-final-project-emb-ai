@@ -1,4 +1,4 @@
-# Emotion Detection Application
+# Final project
 
 A Flask web application that analyzes text with the IBM Watson NLP emotion prediction service.
 
