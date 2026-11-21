@@ -24,4 +24,4 @@ jobs:
       - name: Run unit tests
         run: python -m unittest -v
       - name: Run static analysis
-        run: pylint --errors-only emotion_detection.py server.py
+        run: pylint --errors-only EmotionDetection server.py
