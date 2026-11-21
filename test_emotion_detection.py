@@ -1,12 +1,12 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from emotion_detection import emotion_detector
+from EmotionDetection import emotion_detector
 
 
 class TestEmotionDetector(unittest.TestCase):
 
-    @patch("emotion_detection.requests.post")
+    @patch("EmotionDetection.emotion_detection.requests.post")
     def test_successful_detection(self, mock_post):
         mock_response = Mock()
         mock_response.status_code = 200
@@ -27,7 +27,7 @@ class TestEmotionDetector(unittest.TestCase):
         self.assertEqual(result["dominant_emotion"], "joy")
         self.assertEqual(result["joy"], 0.6)
 
-    @patch("emotion_detection.requests.post")
+    @patch("EmotionDetection.emotion_detection.requests.post")
     def test_service_error(self, mock_post):
         mock_response = Mock()
         mock_response.status_code = 500
@@ -40,7 +40,7 @@ class TestEmotionDetector(unittest.TestCase):
         result = emotion_detector("   ")
         self.assertIsNone(result["dominant_emotion"])
 
-    @patch("emotion_detection.requests.post")
+    @patch("EmotionDetection.emotion_detection.requests.post")
     def test_invalid_response(self, mock_post):
         mock_response = Mock()
         mock_response.status_code = 200
