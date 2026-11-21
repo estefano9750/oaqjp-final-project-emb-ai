@@ -23,6 +23,8 @@ def emotion_detector(text_to_analyze):
 
     try:
         response = requests.post(API_URL, headers=headers, json=data, timeout=30)
+        if response.status_code == 400:
+            return empty_result
         if response.status_code != 200:
             return empty_result
 
