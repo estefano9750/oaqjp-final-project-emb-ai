@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request
-from emotion_detection import emotion_detector
+from EmotionDetection import emotion_detector
 
 app = Flask(__name__)
+
 
 @app.route("/")
 def home():
     """Show the emotion detection page."""
     return render_template("index.html")
+
 
 @app.route("/emotionDetector", methods=["GET"])
 def detect_emotion():
@@ -32,13 +34,18 @@ def detect_emotion():
     )
     return response, 200
 
+
 @app.errorhandler(404)
 def page_not_found(error):
+    """Return a simple message for unknown pages."""
     return "Page not found.", 404
+
 
 @app.errorhandler(500)
 def internal_error(error):
+    """Return a simple message for server errors."""
     return "An internal server error occurred.", 500
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=False)
