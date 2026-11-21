@@ -28,6 +28,16 @@ class TestEmotionDetector(unittest.TestCase):
         self.assertEqual(result["joy"], 0.6)
 
     @patch("EmotionDetection.emotion_detection.requests.post")
+    def test_bad_request_400(self, mock_post):
+        mock_response = Mock()
+        mock_response.status_code = 400
+        mock_post.return_value = mock_response
+
+        result = emotion_detector("Some text")
+        self.assertIsNone(result["dominant_emotion"])
+        self.assertIsNone(result["anger"])
+
+    @patch("EmotionDetection.emotion_detection.requests.post")
     def test_service_error(self, mock_post):
         mock_response = Mock()
         mock_response.status_code = 500
