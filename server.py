@@ -16,7 +16,7 @@ def detect_emotion():
     text_to_analyze = request.args.get("textToAnalyze", "")
 
     if not text_to_analyze.strip():
-        return "Please enter some text to analyze.", 400
+        return "Invalid text! Please try again!", 400
 
     result = emotion_detector(text_to_analyze)
 
