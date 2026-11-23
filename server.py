@@ -1,4 +1,7 @@
+"""Flask web application for the Watson NLP emotion detector."""
+
 from flask import Flask, render_template, request
+
 from EmotionDetection import emotion_detector
 
 app = Flask(__name__)
@@ -36,13 +39,13 @@ def detect_emotion():
 
 
 @app.errorhandler(404)
-def page_not_found(error):
+def page_not_found(_error):
     """Return a simple message for unknown pages."""
     return "Page not found.", 404
 
 
 @app.errorhandler(500)
-def internal_error(error):
+def internal_error(_error):
     """Return a simple message for server errors."""
     return "An internal server error occurred.", 500
 
